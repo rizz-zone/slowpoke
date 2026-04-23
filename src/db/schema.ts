@@ -23,7 +23,9 @@ export const serverIncidentMessage = sqliteTable(
 		snapshotJson: text().notNull(),
 		snapshotHash: text().notNull(),
 		active: integer({ mode: 'boolean' }).notNull().default(true),
-		lastSeenAt: integer().notNull().default(sql`(unixepoch() * 1000)`)
+		lastSeenAt: integer()
+			.notNull()
+			.default(sql`(unixepoch() * 1000)`)
 	},
 	(table) => [primaryKey({ columns: [table.guildId, table.incidentId] })]
 )

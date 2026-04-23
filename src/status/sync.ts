@@ -179,7 +179,9 @@ async function syncIncidentMessages({
 		existingRows.map((row) => [row.incidentId, row] as const)
 	)
 	const activeIncidents = getOpenIncidents(summary)
-	const activeIncidentIds = new Set(activeIncidents.map((incident) => incident.id))
+	const activeIncidentIds = new Set(
+		activeIncidents.map((incident) => incident.id)
+	)
 
 	for (const incident of activeIncidents) {
 		const snapshot = buildIncidentSnapshot(summary, incident)
@@ -191,19 +193,19 @@ async function syncIncidentMessages({
 
 		const messageId = existingRow
 			? await updateIncidentMessage({
-				rest,
-				channelId: server.incidentsChannelId,
-				messageId: existingRow.messageId,
-				snapshot,
-				snapshotHash,
-				existingHash: existingRow.snapshotHash,
-				existingActive: existingRow.active
-			  })
+					rest,
+					channelId: server.incidentsChannelId,
+					messageId: existingRow.messageId,
+					snapshot,
+					snapshotHash,
+					existingHash: existingRow.snapshotHash,
+					existingActive: existingRow.active
+				})
 			: await createIncidentMessage({
-				rest,
-				channelId: server.incidentsChannelId,
-				snapshot
-			  })
+					rest,
+					channelId: server.incidentsChannelId,
+					snapshot
+				})
 
 		await db
 			.insert(serverIncidentMessage)
@@ -218,7 +220,10 @@ async function syncIncidentMessages({
 				lastSeenAt: Date.now()
 			})
 			.onConflictDoUpdate({
-				target: [serverIncidentMessage.guildId, serverIncidentMessage.incidentId],
+				target: [
+					serverIncidentMessage.guildId,
+					serverIncidentMessage.incidentId
+				],
 				set: {
 					channelId: server.incidentsChannelId,
 					messageId,

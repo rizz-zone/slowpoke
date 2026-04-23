@@ -178,8 +178,7 @@ export default {
 		return new Response(JSON.stringify(response), {
 			headers: { 'Content-Type': 'application/json' }
 		})
-	}
-	,
+	},
 	async scheduled(_controller, env, _ctx) {
 		const db = drizzle(env.GLOBAL_DB)
 		await syncAllRegisteredServers({ env, db })
