@@ -26,7 +26,7 @@
 		{
 			"binding": "GLOBAL_DB",
 			"database_name": "slowpoke-global-db",
-			"database_id": "slowpoke-global-db",
+			"database_id": "1261c897-fd7c-428a-ba7e-b471432e6020",
 			"migrations_dir": "src/db/migrations"
 		}
 	]
