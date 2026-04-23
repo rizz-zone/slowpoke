@@ -1,0 +1,33 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"name": "slowpoke",
+	"main": "src/index.ts",
+	"compatibility_date": "2026-04-17",
+	"keep_vars": true,
+	"compatibility_flags": ["nodejs_compat"],
+	"triggers": {
+		"crons": ["*/2 * * * *"]
+	},
+	"durable_objects": {
+		"bindings": [
+			{
+				"name": "PENDING_REGISTRATION",
+				"class_name": "PendingRegistration"
+			}
+		]
+	},
+	"migrations": [
+		{
+			"tag": "v1",
+			"new_sqlite_classes": ["PendingRegistration"]
+		}
+	],
+	"d1_databases": [
+		{
+			"binding": "GLOBAL_DB",
+			"database_name": "slowpoke-global-db",
+			"database_id": "slowpoke-global-db",
+			"migrations_dir": "src/db/migrations"
+		}
+	]
+}

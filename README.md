@@ -5,14 +5,12 @@ Cloudflare Workers.
 
 ## Repository structure
 
-| Path | Description |
-| --- | --- |
-| `src/index.ts` | Worker entrypoint for Discord interactions and scheduled sync |
-| `src/commands` | Slash command definitions and registration handlers |
-| `src/status` | incident.io fetch logic and Discord channel/message syncing |
-| `src/db` | D1 schema and migrations |
-| `src/durable` | Durable Object state for in-progress registrations |
-| `utils/register.ts` | Script for registering slash commands with Discord |
+- `src/index.ts`: Worker entrypoint for Discord interactions and scheduled sync
+- `src/commands`: slash command definitions and registration handlers
+- `src/status`: incident.io fetch logic and Discord channel/message syncing
+- `src/db`: D1 schema and migrations
+- `src/durable`: Durable Object state for in-progress registrations
+- `utils/register.ts`: script for registering slash commands with Discord
 
 ## What it does
 
@@ -140,5 +138,7 @@ bun run build
 
 ## Contributions
 
-Contributions are welcome. Keep changes focused, ensure the Worker still builds,
-and include any required migration changes when touching the D1 schema.
+Contributions are welcome, just ensure that any code you contribute is
+legitimately helpful, and that any code written by agents has been tracked
+using [Git AI](https://github.com/git-ai-project/git-ai) (disclose whether AI
+was used to write your contributed code in the PR).
