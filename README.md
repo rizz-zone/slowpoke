@@ -3,29 +3,12 @@
 Discord bot for mirroring incident.io status pages into Discord, deployed on
 Cloudflare Workers.
 
-## Repository structure
-
-- `src/index.ts`: Worker entrypoint for Discord interactions and scheduled sync
-- `src/commands`: slash command definitions and registration handlers
-- `src/status`: incident.io fetch logic and Discord channel/message syncing
-- `src/db`: D1 schema and migrations
-- `src/durable`: Durable Object state for in-progress registrations
-- `utils/register.ts`: script for registering slash commands with Discord
-
 ## What it does
 
-Once installed in a server, slowpoke can:
+Once registered in a server, slowpoke creates a category in your server to
+show your live incidents.
 
-- validate Discord interaction webhooks directly in a Worker
-- let admins run `/register_server` with an incident.io status-page domain
-- create or reuse a category for tracked status channels
-- create a voice channel whose name reflects current overall status
-- create a voice channel whose name reflects the tracked domain
-- create an `incidents` text channel containing live incident cards
-- poll the tracked status pages every 2 minutes using a cron trigger
-- update existing incident messages instead of reposting duplicates
-- expire incomplete registration sessions after 24 hours
-- optionally require a Discord consumable SKU before a server can register
+![channels](https://files.catbox.moe/yi2a2w.png)
 
 ## Setup
 
